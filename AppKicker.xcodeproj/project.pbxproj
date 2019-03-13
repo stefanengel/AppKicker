@@ -11,6 +11,9 @@
 		3BF34B58223813420052EE5A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF34B57223813420052EE5A /* ViewController.swift */; };
 		3BF34B5A223813430052EE5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BF34B59223813430052EE5A /* Assets.xcassets */; };
 		3BF34B5D223813430052EE5A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BF34B5B223813430052EE5A /* Main.storyboard */; };
+		3BF34B6622382EAD0052EE5A /* Script.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF34B6522382EAD0052EE5A /* Script.swift */; };
+		3BF34B6822382F1F0052EE5A /* ScriptResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF34B6722382F1F0052EE5A /* ScriptResult.swift */; };
+		3BF34B6A22383B9F0052EE5A /* IntegerValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF34B6922383B9F0052EE5A /* IntegerValueFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +24,9 @@
 		3BF34B5C223813430052EE5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3BF34B5E223813430052EE5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BF34B5F223813430052EE5A /* AppKicker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppKicker.entitlements; sourceTree = "<group>"; };
+		3BF34B6522382EAD0052EE5A /* Script.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Script.swift; sourceTree = "<group>"; };
+		3BF34B6722382F1F0052EE5A /* ScriptResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptResult.swift; sourceTree = "<group>"; };
+		3BF34B6922383B9F0052EE5A /* IntegerValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegerValueFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +65,9 @@
 				3BF34B5B223813430052EE5A /* Main.storyboard */,
 				3BF34B5E223813430052EE5A /* Info.plist */,
 				3BF34B5F223813430052EE5A /* AppKicker.entitlements */,
+				3BF34B6522382EAD0052EE5A /* Script.swift */,
+				3BF34B6722382F1F0052EE5A /* ScriptResult.swift */,
+				3BF34B6922383B9F0052EE5A /* IntegerValueFormatter.swift */,
 			);
 			path = AppKicker;
 			sourceTree = "<group>";
@@ -95,6 +104,11 @@
 				TargetAttributes = {
 					3BF34B51223813420052EE5A = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -134,6 +148,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BF34B58223813420052EE5A /* ViewController.swift in Sources */,
+				3BF34B6A22383B9F0052EE5A /* IntegerValueFormatter.swift in Sources */,
+				3BF34B6822382F1F0052EE5A /* ScriptResult.swift in Sources */,
+				3BF34B6622382EAD0052EE5A /* Script.swift in Sources */,
 				3BF34B56223813420052EE5A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -271,7 +288,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = AppKicker/AppKicker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = XVBT48DGY3;
@@ -290,7 +306,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = AppKicker/AppKicker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = XVBT48DGY3;
