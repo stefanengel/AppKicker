@@ -73,6 +73,14 @@ extension ViewController {
 		script.execute { result in
 			print(result)
 		}
+
+		if let url = URL(string: connectionTextField.stringValue) {
+			let connectionChecker = ConnectionChecker(url: url)
+
+			connectionChecker.canConnect() { canConnect in
+				print("Can connect? \(canConnect)")
+			}
+		}
 	}
 }
 
