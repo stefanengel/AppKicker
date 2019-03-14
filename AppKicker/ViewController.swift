@@ -21,6 +21,9 @@ class ViewController: NSViewController {
 	@IBOutlet weak var connectionTextField: NSTextField!
 	@IBOutlet weak var enableScriptCheckbox: NSButton!
 	@IBOutlet weak var enableConnectionCheckbox: NSButton!
+	@IBOutlet weak var verticalStackView: NSStackView!
+	@IBOutlet weak var startButton: NSButton!
+	@IBOutlet var logView: NSTextView!
 	
 	@IBAction func enableScriptCheckboxPressed(_ sender: Any) {
 		scriptTextField.isEnabled = enableScriptCheckbox.state == .on
@@ -53,6 +56,11 @@ class ViewController: NSViewController {
 
 		enableScriptCheckbox.title = "Enabled"
 		enableConnectionCheckbox.title = "Enabled"
+
+		verticalStackView.setCustomSpacing(30.0, after: startButton)
+
+		logView.isEditable = false
+		logView.font = NSFont(name: "Courier New", size: 12.0)
 
 		for app in NSWorkspace.shared.runningApplications {
 			applicationPopup.addItem(withTitle: app.executableURL!.lastPathComponent)
@@ -87,6 +95,6 @@ extension ViewController {
 // MARK: - Timer
 extension ViewController {
 	@objc func handleTimer() {
-		print("Timer fired!")
+		logView.string.append("\n\(NSDate()) Timer fired")
 	}
 }
