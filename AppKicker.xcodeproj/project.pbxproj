@@ -136,6 +136,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3BF34B62223813430052EE5A /* Build configuration list for PBXNativeTarget "AppKicker" */;
 			buildPhases = (
+				3B476911223C43E100FB4D97 /* Carthage Copy Frameworks */,
 				3BF34B4E223813420052EE5A /* Sources */,
 				3BF34B4F223813420052EE5A /* Frameworks */,
 				3BF34B50223813420052EE5A /* Resources */,
@@ -198,6 +199,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3B476911223C43E100FB4D97 /* Carthage Copy Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/PromiseKit.framework",
+			);
+			name = "Carthage Copy Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3BF34B4E223813420052EE5A /* Sources */ = {
