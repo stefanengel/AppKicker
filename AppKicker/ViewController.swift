@@ -61,6 +61,7 @@ class ViewController: NSViewController {
 
 		logView.isEditable = false
 		logView.font = NSFont(name: "Courier New", size: 12.0)
+		Logger.shared.textView = logView
 
 		for app in NSWorkspace.shared.runningApplications {
 			applicationPopup.addItem(withTitle: app.executableURL!.lastPathComponent)
@@ -95,6 +96,6 @@ extension ViewController {
 // MARK: - Timer
 extension ViewController {
 	@objc func handleTimer() {
-		logView.string.append("\n\(NSDate()) Timer fired")
+		Logger.shared.log(message: "Timer fired")
 	}
 }

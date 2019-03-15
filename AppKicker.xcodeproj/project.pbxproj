@@ -15,6 +15,7 @@
 		3BF34B6822382F1F0052EE5A /* ScriptResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF34B6722382F1F0052EE5A /* ScriptResult.swift */; };
 		3BF34B6A22383B9F0052EE5A /* IntegerValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF34B6922383B9F0052EE5A /* IntegerValueFormatter.swift */; };
 		3BF34B6C223ACBF40052EE5A /* ConnectionChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF34B6B223ACBF40052EE5A /* ConnectionChecker.swift */; };
+		3BF34B6E223C0E990052EE5A /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF34B6D223C0E990052EE5A /* Logger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		3BF34B6722382F1F0052EE5A /* ScriptResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptResult.swift; sourceTree = "<group>"; };
 		3BF34B6922383B9F0052EE5A /* IntegerValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegerValueFormatter.swift; sourceTree = "<group>"; };
 		3BF34B6B223ACBF40052EE5A /* ConnectionChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionChecker.swift; sourceTree = "<group>"; };
+		3BF34B6D223C0E990052EE5A /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				3BF34B6722382F1F0052EE5A /* ScriptResult.swift */,
 				3BF34B6922383B9F0052EE5A /* IntegerValueFormatter.swift */,
 				3BF34B6B223ACBF40052EE5A /* ConnectionChecker.swift */,
+				3BF34B6D223C0E990052EE5A /* Logger.swift */,
 			);
 			path = AppKicker;
 			sourceTree = "<group>";
@@ -154,6 +157,7 @@
 				3BF34B6A22383B9F0052EE5A /* IntegerValueFormatter.swift in Sources */,
 				3BF34B6822382F1F0052EE5A /* ScriptResult.swift in Sources */,
 				3BF34B6C223ACBF40052EE5A /* ConnectionChecker.swift in Sources */,
+				3BF34B6E223C0E990052EE5A /* Logger.swift in Sources */,
 				3BF34B6622382EAD0052EE5A /* Script.swift in Sources */,
 				3BF34B56223813420052EE5A /* AppDelegate.swift in Sources */,
 			);
