@@ -80,17 +80,21 @@ class ViewController: NSViewController {
 
 extension ViewController {
 	fileprivate func execute() {
-		let script = Script(script: scriptTextField.stringValue)
+		if enableScriptCheckbox.state == .on {
+			let script = Script(script: scriptTextField.stringValue)
 
-		script.execute { result in
-			print(result)
+			script.execute { result in
+				print(result)
+			}
 		}
 
-		if let url = URL(string: connectionTextField.stringValue) {
-			let connectionChecker = ConnectionChecker(url: url)
+		if enableConnectionCheckbox.state == .on {
+			if let url = URL(string: connectionTextField.stringValue) {
+				let connectionChecker = ConnectionChecker(url: url)
 
-			connectionChecker.canConnect() { canConnect in
-				print("Can connect? \(canConnect)")
+				connectionChecker.canConnect() { canConnect in
+					print("Can connect? \(canConnect)")
+				}
 			}
 		}
 	}
