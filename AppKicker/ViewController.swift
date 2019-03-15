@@ -9,7 +9,6 @@
 import Cocoa
 
 class ViewController: NSViewController {
-
 	@IBOutlet weak var applicationLabel: NSTextField!
 	@IBOutlet weak var scriptLabel: NSTextField!
 	@IBOutlet weak var intervalLabel: NSTextField!
@@ -24,11 +23,14 @@ class ViewController: NSViewController {
 	@IBOutlet weak var verticalStackView: NSStackView!
 	@IBOutlet weak var startButton: NSButton!
 	@IBOutlet var logView: NSTextView!
+
+	var apps: [String: URL] = [:]
 	
 	@IBAction func enableScriptCheckboxPressed(_ sender: Any) {
 		scriptTextField.isEnabled = enableScriptCheckbox.state == .on
 		scriptLabel.alphaValue = enableScriptCheckbox.state == .on ? 1.0 : 0.5
 	}
+	
 	@IBAction func enableConnectionCheckboxPressed(_ sender: Any) {
 		connectionTextField.isEnabled = enableConnectionCheckbox.state == .on
 		connectionLabel.alphaValue = enableConnectionCheckbox.state == .on ? 1.0 : 0.5
@@ -65,6 +67,7 @@ class ViewController: NSViewController {
 
 		for app in NSWorkspace.shared.runningApplications {
 			applicationPopup.addItem(withTitle: app.executableURL!.lastPathComponent)
+			apps[app.executableURL!.lastPathComponent] = app.executableURL!
 		}
 	}
 
@@ -96,6 +99,11 @@ extension ViewController {
 // MARK: - Timer
 extension ViewController {
 	@objc func handleTimer() {
-		Logger.shared.log(message: "Timer fired")
+		guard let app = apps[applicationPopup.selectedItem!.title] else {
+			return
+		}
+
+		Logger.shared.log(message: "Restarting app \(app)")
+		AppRestarter.restart(app: app)
 	}
 }
