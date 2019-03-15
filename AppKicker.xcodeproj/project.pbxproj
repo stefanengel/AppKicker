@@ -65,20 +65,68 @@
 		3BF34B54223813420052EE5A /* AppKicker */ = {
 			isa = PBXGroup;
 			children = (
-				3BF34B55223813420052EE5A /* AppDelegate.swift */,
-				3BF34B57223813420052EE5A /* ViewController.swift */,
+				3BF34B76223C32FA0052EE5A /* Logger */,
+				3BF34B74223C32460052EE5A /* App */,
+				3BF34B75223C32A10052EE5A /* Control */,
+				3BF34B73223C322E0052EE5A /* Formatter */,
+				3BF34B72223C32220052EE5A /* Conditions */,
+				3BF34B71223C32030052EE5A /* View */,
 				3BF34B59223813430052EE5A /* Assets.xcassets */,
-				3BF34B5B223813430052EE5A /* Main.storyboard */,
 				3BF34B5E223813430052EE5A /* Info.plist */,
 				3BF34B5F223813430052EE5A /* AppKicker.entitlements */,
-				3BF34B6522382EAD0052EE5A /* Script.swift */,
-				3BF34B6722382F1F0052EE5A /* ScriptResult.swift */,
-				3BF34B6922383B9F0052EE5A /* IntegerValueFormatter.swift */,
-				3BF34B6B223ACBF40052EE5A /* ConnectionChecker.swift */,
-				3BF34B6D223C0E990052EE5A /* Logger.swift */,
-				3BF34B6F223C2AC20052EE5A /* AppRestarter.swift */,
 			);
 			path = AppKicker;
+			sourceTree = "<group>";
+		};
+		3BF34B71223C32030052EE5A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3BF34B5B223813430052EE5A /* Main.storyboard */,
+				3BF34B57223813420052EE5A /* ViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3BF34B72223C32220052EE5A /* Conditions */ = {
+			isa = PBXGroup;
+			children = (
+				3BF34B6B223ACBF40052EE5A /* ConnectionChecker.swift */,
+				3BF34B6522382EAD0052EE5A /* Script.swift */,
+				3BF34B6722382F1F0052EE5A /* ScriptResult.swift */,
+			);
+			path = Conditions;
+			sourceTree = "<group>";
+		};
+		3BF34B73223C322E0052EE5A /* Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				3BF34B6922383B9F0052EE5A /* IntegerValueFormatter.swift */,
+			);
+			path = Formatter;
+			sourceTree = "<group>";
+		};
+		3BF34B74223C32460052EE5A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3BF34B55223813420052EE5A /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		3BF34B75223C32A10052EE5A /* Control */ = {
+			isa = PBXGroup;
+			children = (
+				3BF34B6F223C2AC20052EE5A /* AppRestarter.swift */,
+			);
+			path = Control;
+			sourceTree = "<group>";
+		};
+		3BF34B76223C32FA0052EE5A /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				3BF34B6D223C0E990052EE5A /* Logger.swift */,
+			);
+			path = Logger;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
