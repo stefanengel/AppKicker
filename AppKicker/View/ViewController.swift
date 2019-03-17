@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import PromiseKit
 
 class ViewController: NSViewController {
 	@IBOutlet weak var applicationLabel: NSTextField!
@@ -42,13 +43,11 @@ class ViewController: NSViewController {
 		}
 
 		Timer.scheduledTimer(timeInterval: TimeInterval(interval), target: self, selector: #selector(handleTimer), userInfo: nil, repeats: true)
-		execute()
 	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		// Do any additional setup after loading the view.
 		applicationLabel.stringValue = "Anwendung:"
 		scriptLabel.stringValue = "Script:"
 		intervalLabel.stringValue = "Interval (seconds):"
@@ -66,8 +65,15 @@ class ViewController: NSViewController {
 		Logger.shared.textView = logView
 
 		for app in NSWorkspace.shared.runningApplications {
-			applicationPopup.addItem(withTitle: app.executableURL!.lastPathComponent)
 			apps[app.executableURL!.lastPathComponent] = app.executableURL!
+		}
+
+		let sortedAppUrls = apps.values.sorted(by: { lhs, rhs in
+			return lhs.absoluteString < rhs.absoluteString
+		})
+
+		for appUrl in sortedAppUrls {
+			applicationPopup.addItem(withTitle: appUrl.lastPathComponent)
 		}
 	}
 
@@ -78,24 +84,69 @@ class ViewController: NSViewController {
 	}
 }
 
-extension ViewController {
-	fileprivate func execute() {
-		if enableScriptCheckbox.state == .on {
-			let script = Script(script: scriptTextField.stringValue)
+enum AppKickerError: Error {
+	case noConditionSpecified
+	case scriptConditionNotMet
+	case connectionConditionNotMet
+}
 
-			script.execute { result in
-				print(result)
+extension ViewController {
+	fileprivate func check(appWithUrl appUrl: URL) {
+		firstly {
+			return Promise<Void> { seal in
+				if enableScriptCheckbox.state == .off
+					&& enableConnectionCheckbox.state == .off {
+					seal.reject(AppKickerError.noConditionSpecified)
+					return
+				}
+
+				seal.fulfill(())
 			}
 		}
+		.then {
+			return Promise<Void> { seal in
+				if self.enableScriptCheckbox.state == .on {
+					let script = Script(script: self.scriptTextField.stringValue)
 
-		if enableConnectionCheckbox.state == .on {
-			if let url = URL(string: connectionTextField.stringValue) {
-				let connectionChecker = ConnectionChecker(url: url)
-
-				connectionChecker.canConnect() { canConnect in
-					print("Can connect? \(canConnect)")
+					script.execute { result in
+						if result.exitCode == 0 {
+							seal.fulfill(())
+							return
+						}
+						else {
+							seal.reject(AppKickerError.scriptConditionNotMet)
+							return
+						}
+					}
 				}
+
+				seal.fulfill(())
 			}
+		}
+		.then {
+			return Promise<Void> { seal in
+				if self.enableConnectionCheckbox.state == .on {
+					if let url = URL(string: self.connectionTextField.stringValue) {
+						let connectionChecker = ConnectionChecker(url: url)
+
+						connectionChecker.canConnect() { canConnect in
+							if canConnect {
+								seal.fulfill(())
+								return
+							}
+							else {
+								seal.reject(AppKickerError.connectionConditionNotMet)
+								return
+							}
+						}
+					}
+				}
+
+				seal.fulfill(())
+			}
+		}
+		.catch { _ in
+			AppRestarter.restart(app: appUrl)
 		}
 	}
 }
@@ -103,11 +154,10 @@ extension ViewController {
 // MARK: - Timer
 extension ViewController {
 	@objc func handleTimer() {
-		guard let app = apps[applicationPopup.selectedItem!.title] else {
+		guard let appUrl = apps[applicationPopup.selectedItem!.title] else {
 			return
 		}
 
-		Logger.shared.log(message: "Restarting app \(app)")
-		AppRestarter.restart(app: app)
+		check(appWithUrl: appUrl)
 	}
 }
