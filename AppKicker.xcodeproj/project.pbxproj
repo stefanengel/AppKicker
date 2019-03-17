@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B47691E223E7E6A00FB4D97 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B476916223E7CCD00FB4D97 /* PromiseKit.framework */; };
+		3B476920223E806000FB4D97 /* PromiseKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 3B476916223E7CCD00FB4D97 /* PromiseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3BF34B56223813420052EE5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF34B55223813420052EE5A /* AppDelegate.swift */; };
 		3BF34B58223813420052EE5A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF34B57223813420052EE5A /* ViewController.swift */; };
 		3BF34B5A223813430052EE5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BF34B59223813430052EE5A /* Assets.xcassets */; };
@@ -19,7 +21,22 @@
 		3BF34B70223C2AC20052EE5A /* AppRestarter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF34B6F223C2AC20052EE5A /* AppRestarter.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		3B47691F223E805600FB4D97 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3B476920223E806000FB4D97 /* PromiseKit.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		3B476916223E7CCD00FB4D97 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/Mac/PromiseKit.framework; sourceTree = "<group>"; };
 		3BF34B52223813420052EE5A /* AppKicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppKicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BF34B55223813420052EE5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BF34B57223813420052EE5A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -40,17 +57,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B47691E223E7E6A00FB4D97 /* PromiseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B476912223C460000FB4D97 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3B476916223E7CCD00FB4D97 /* PromiseKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3BF34B49223813420052EE5A = {
 			isa = PBXGroup;
 			children = (
 				3BF34B54223813420052EE5A /* AppKicker */,
 				3BF34B53223813420052EE5A /* Products */,
+				3B476912223C460000FB4D97 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,10 +163,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3BF34B62223813430052EE5A /* Build configuration list for PBXNativeTarget "AppKicker" */;
 			buildPhases = (
-				3B476911223C43E100FB4D97 /* Carthage Copy Frameworks */,
 				3BF34B4E223813420052EE5A /* Sources */,
 				3BF34B4F223813420052EE5A /* Frameworks */,
 				3BF34B50223813420052EE5A /* Resources */,
+				3B476911223C43E100FB4D97 /* Carthage Copy Frameworks */,
+				3B47691F223E805600FB4D97 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -215,6 +243,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/PromiseKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -289,6 +318,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -350,6 +380,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -374,6 +405,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = XVBT48DGY3;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = AppKicker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -392,6 +427,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = XVBT48DGY3;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = AppKicker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
