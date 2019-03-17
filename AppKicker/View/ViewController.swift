@@ -154,8 +154,9 @@ extension ViewController {
 						}
 					}
 				}
-
-				seal.fulfill(())
+				else {
+					seal.fulfill(())
+				}
 			}
 		}
 		.done {
