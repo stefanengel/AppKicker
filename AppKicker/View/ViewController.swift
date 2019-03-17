@@ -14,10 +14,10 @@ class ViewController: NSViewController {
 	@IBOutlet weak var scriptLabel: NSTextField!
 	@IBOutlet weak var intervalLabel: NSTextField!
 	@IBOutlet weak var connectionLabel: NSTextField!
-	@IBOutlet weak var conditionLabel: NSTextField!
 	@IBOutlet weak var applicationPopup: NSPopUpButton!
 	@IBOutlet weak var scriptTextField: NSTextField!
 	@IBOutlet weak var intervalTextField: NSTextField!
+	@IBOutlet weak var intervalStackView: NSStackView!
 	@IBOutlet weak var connectionTextField: NSTextField!
 	@IBOutlet weak var enableScriptCheckbox: NSButton!
 	@IBOutlet weak var enableConnectionCheckbox: NSButton!
@@ -28,13 +28,11 @@ class ViewController: NSViewController {
 	var apps: [String: URL] = [:]
 	
 	@IBAction func enableScriptCheckboxPressed(_ sender: Any) {
-		scriptTextField.isEnabled = enableScriptCheckbox.state == .on
-		scriptLabel.alphaValue = enableScriptCheckbox.state == .on ? 1.0 : 0.5
+		updateConditionStates()
 	}
 	
 	@IBAction func enableConnectionCheckboxPressed(_ sender: Any) {
-		connectionTextField.isEnabled = enableConnectionCheckbox.state == .on
-		connectionLabel.alphaValue = enableConnectionCheckbox.state == .on ? 1.0 : 0.5
+		updateConditionStates()
 	}
 
 	@IBAction func startButtonPressed(_ sender: Any) {
@@ -49,20 +47,22 @@ class ViewController: NSViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		applicationLabel.stringValue = "Anwendung:"
+		applicationLabel.stringValue = "App:"
 		scriptLabel.stringValue = "Script:"
 		intervalLabel.stringValue = "Interval (seconds):"
 		intervalTextField.formatter = IntegerValueFormatter()
-		intervalTextField.stringValue = "5"
+		intervalTextField.stringValue = "60"
 		connectionLabel.stringValue = "Ensure connection to:"
 		connectionTextField.stringValue = "https://www.github.com"
-		conditionLabel.stringValue = "Conditions"
 
 		enableScriptCheckbox.title = "Enabled"
 		enableScriptCheckbox.state = .off
 		enableConnectionCheckbox.title = "Enabled"
 		enableConnectionCheckbox.state = .off
 
+		updateConditionStates()
+
+		verticalStackView.setCustomSpacing(30.0, after: intervalStackView)
 		verticalStackView.setCustomSpacing(30.0, after: startButton)
 
 		logView.isEditable = false
@@ -173,5 +173,16 @@ extension ViewController {
 		}
 
 		check(appWithUrl: appUrl)
+	}
+}
+
+// MARK: - View states
+extension ViewController {
+	func updateConditionStates() {
+		scriptLabel.alphaValue = enableScriptCheckbox.state == .on ? 1.0 : 0.5
+		connectionLabel.alphaValue = enableConnectionCheckbox.state == .on ? 1.0 : 0.5
+
+		scriptTextField.isEnabled = enableScriptCheckbox.state == .on
+		connectionTextField.isEnabled = enableConnectionCheckbox.state == .on
 	}
 }

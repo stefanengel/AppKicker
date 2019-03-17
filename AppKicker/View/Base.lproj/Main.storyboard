@@ -713,10 +713,10 @@
                                 <rect key="frame" x="18" y="18" width="444" height="308"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="18" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e8x-yI-hf5">
-                                        <rect key="frame" x="0.0" y="287" width="84" height="21"/>
+                                        <rect key="frame" x="0.0" y="262" width="84" height="46"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0ZN-NS-LPR">
-                                                <rect key="frame" x="-2" y="2" width="37" height="17"/>
+                                                <rect key="frame" x="-2" y="15" width="37" height="17"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="lBk-Mh-vaj">
                                                     <font key="font" usesAppearanceFont="YES"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -724,7 +724,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zGb-0j-R2e">
-                                                <rect key="frame" x="49" y="-3" width="38" height="25"/>
+                                                <rect key="frame" x="49" y="10" width="38" height="25"/>
                                                 <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="Dib-fI-6Lc">
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="menu"/>
@@ -742,7 +742,7 @@
                                         </customSpacing>
                                     </stackView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="18" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OcH-Wy-yyH">
-                                        <rect key="frame" x="0.0" y="257" width="147" height="22"/>
+                                        <rect key="frame" x="0.0" y="232" width="147" height="22"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gPd-gs-tff">
                                                 <rect key="frame" x="-2" y="3" width="37" height="17"/>
@@ -770,14 +770,6 @@
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zLe-YD-h8p">
-                                        <rect key="frame" x="-2" y="232" width="37" height="17"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="HBi-bx-cnP">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="18" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GRq-m0-YGL">
                                         <rect key="frame" x="0.0" y="202" width="222" height="22"/>
                                         <subviews>
@@ -905,10 +897,8 @@
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
-                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
-                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
@@ -928,12 +918,12 @@
                     <connections>
                         <outlet property="applicationLabel" destination="0ZN-NS-LPR" id="W1o-Hb-VjV"/>
                         <outlet property="applicationPopup" destination="zGb-0j-R2e" id="dGj-lX-m7Y"/>
-                        <outlet property="conditionLabel" destination="zLe-YD-h8p" id="aq4-dE-hfH"/>
                         <outlet property="connectionLabel" destination="0Qx-8c-jPx" id="v0b-UX-wvP"/>
                         <outlet property="connectionTextField" destination="Che-FP-3Zx" id="Vca-ua-rXk"/>
                         <outlet property="enableConnectionCheckbox" destination="aUA-Pc-ZRO" id="9Af-kN-3UE"/>
                         <outlet property="enableScriptCheckbox" destination="tEq-t2-Jgq" id="RdK-5g-j71"/>
                         <outlet property="intervalLabel" destination="gPd-gs-tff" id="wW4-PG-rHR"/>
+                        <outlet property="intervalStackView" destination="OcH-Wy-yyH" id="3Dw-8R-r31"/>
                         <outlet property="intervalTextField" destination="Xnf-F3-eAF" id="tze-wE-AM1"/>
                         <outlet property="logView" destination="j1G-f1-8Jw" id="2g7-0J-oTf"/>
                         <outlet property="scriptLabel" destination="po6-ae-6wD" id="Upb-OW-JpD"/>
