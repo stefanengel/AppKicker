@@ -14,3 +14,13 @@ When both conditions are specified, the restart is performed if at least one of 
 When no conditions are specified, the restart is always triggered.
 
 ![](Screenshot.png)
+
+## Why is there an app for that?
+
+## How to build
+To build AppKicker, you need Carthage.
+
+Run:
+`carthage update --platform Mac`
+
+Then open `AppKicker.xcodeproj` in Xcode and hit `CMD + R`.
