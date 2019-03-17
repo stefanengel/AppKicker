@@ -50,7 +50,8 @@ class ViewController: NSViewController {
 		super.viewDidLoad()
 
 		applicationLabel.stringValue = "App:"
-		scriptLabel.stringValue = "Script:"
+		scriptLabel.stringValue = "Command:"
+		scriptTextField.stringValue = "sh /path/to/your/script.sh"
 		intervalLabel.stringValue = "Interval (seconds):"
 		intervalTextField.formatter = IntegerValueFormatter()
 		intervalTextField.stringValue = "60"
