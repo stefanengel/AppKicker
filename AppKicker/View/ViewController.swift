@@ -70,6 +70,7 @@ class ViewController: NSViewController {
 
 		let sortedAppUrls = apps.values.sorted(by: { lhs, rhs in
 			return lhs.absoluteString < rhs.absoluteString
+			return lhs.lastPathComponent < rhs.lastPathComponent
 		})
 
 		for appUrl in sortedAppUrls {
