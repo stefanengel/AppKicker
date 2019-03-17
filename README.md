@@ -21,7 +21,7 @@ Sometimes, you might have a server that runs on macOS and uses special software 
 AppKicker is a workaround that allows you to restart a specific app when a certain amount of time has passed. You can also specify conditions to check if the restart is required. A condition might be the availability of a specific website. More specialized conditions can be implemented by running a script.
 
 ## How to build
-To build AppKicker, you need Carthage.
+To build AppKicker, you need Carthage and Xcode 10.
 
 Run:
 `carthage update --platform Mac`
