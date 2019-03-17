@@ -43,6 +43,7 @@ class ViewController: NSViewController {
 		}
 
 		Logger.shared.log(message: "Start")
+		startButton.isEnabled = false
 		Timer.scheduledTimer(timeInterval: TimeInterval(interval), target: self, selector: #selector(handleTimer), userInfo: nil, repeats: true)
 	}
 
