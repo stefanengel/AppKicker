@@ -21,8 +21,10 @@ extension Logger {
 			return
 		}
 
-		textView.string.append("\n\(NSDate()) \(message)")
-		textView.scrollToEndOfDocument(self)
+		DispatchQueue.main.async { [weak self] in
+			textView.string.append("\n\(NSDate()) \(message)")
+			textView.scrollToEndOfDocument(self)
+		}
 		os_log("%{PUBLIC}@", log: OSLog.actions, type: .info, message)
 	}
 }
