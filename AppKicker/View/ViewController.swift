@@ -42,6 +42,7 @@ class ViewController: NSViewController {
 			return
 		}
 
+		Logger.shared.log(message: "Start")
 		Timer.scheduledTimer(timeInterval: TimeInterval(interval), target: self, selector: #selector(handleTimer), userInfo: nil, repeats: true)
 	}
 
@@ -52,11 +53,15 @@ class ViewController: NSViewController {
 		scriptLabel.stringValue = "Script:"
 		intervalLabel.stringValue = "Interval (seconds):"
 		intervalTextField.formatter = IntegerValueFormatter()
+		intervalTextField.stringValue = "5"
 		connectionLabel.stringValue = "Ensure connection to:"
+		connectionTextField.stringValue = "https://www.github.com"
 		conditionLabel.stringValue = "Conditions"
 
 		enableScriptCheckbox.title = "Enabled"
+		enableScriptCheckbox.state = .off
 		enableConnectionCheckbox.title = "Enabled"
+		enableConnectionCheckbox.state = .off
 
 		verticalStackView.setCustomSpacing(30.0, after: startButton)
 
@@ -69,7 +74,6 @@ class ViewController: NSViewController {
 		}
 
 		let sortedAppUrls = apps.values.sorted(by: { lhs, rhs in
-			return lhs.absoluteString < rhs.absoluteString
 			return lhs.lastPathComponent < rhs.lastPathComponent
 		})
 
@@ -97,6 +101,7 @@ extension ViewController {
 			return Promise<Void> { seal in
 				if enableScriptCheckbox.state == .off
 					&& enableConnectionCheckbox.state == .off {
+					Logger.shared.log(message: "No conditions specified")
 					seal.reject(AppKickerError.noConditionSpecified)
 					return
 				}
@@ -111,10 +116,12 @@ extension ViewController {
 
 					script.execute { result in
 						if result.exitCode == 0 {
+							Logger.shared.log(message: "Script successful")
 							seal.fulfill(())
 							return
 						}
 						else {
+							Logger.shared.log(message: "Script not successful")
 							seal.reject(AppKickerError.scriptConditionNotMet)
 							return
 						}
@@ -132,10 +139,12 @@ extension ViewController {
 
 						connectionChecker.canConnect() { canConnect in
 							if canConnect {
+								Logger.shared.log(message: "Connection to \(url.absoluteString) successful")
 								seal.fulfill(())
 								return
 							}
 							else {
+								Logger.shared.log(message: "Connection to \(url.absoluteString) not successful")
 								seal.reject(AppKickerError.connectionConditionNotMet)
 								return
 							}
@@ -146,7 +155,11 @@ extension ViewController {
 				seal.fulfill(())
 			}
 		}
+		.done {
+			Logger.shared.log(message: "App \(appUrl.lastPathComponent) seems to work fine")
+		}
 		.catch { _ in
+			Logger.shared.log(message: "Restarting app \(appUrl.lastPathComponent)")
 			AppRestarter.restart(app: appUrl)
 		}
 	}
