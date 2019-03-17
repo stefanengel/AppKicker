@@ -67,6 +67,7 @@
 		3B476912223C460000FB4D97 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3B47692A223E8C1300FB4D97 /* PromiseKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -74,7 +75,6 @@
 		3BF34B49223813420052EE5A = {
 			isa = PBXGroup;
 			children = (
-				3B47692A223E8C1300FB4D97 /* PromiseKit.framework */,
 				3BF34B54223813420052EE5A /* AppKicker */,
 				3BF34B53223813420052EE5A /* Products */,
 				3B476912223C460000FB4D97 /* Frameworks */,
