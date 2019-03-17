@@ -10,6 +10,8 @@ import Cocoa
 import PromiseKit
 
 class ViewController: NSViewController {
+	let extraSpacingForStackView: CGFloat = 30
+
 	@IBOutlet weak var applicationLabel: NSTextField!
 	@IBOutlet weak var scriptLabel: NSTextField!
 	@IBOutlet weak var intervalLabel: NSTextField!
@@ -62,8 +64,8 @@ class ViewController: NSViewController {
 
 		updateConditionStates()
 
-		verticalStackView.setCustomSpacing(30.0, after: intervalStackView)
-		verticalStackView.setCustomSpacing(30.0, after: startButton)
+		verticalStackView.setCustomSpacing(extraSpacingForStackView, after: intervalStackView)
+		verticalStackView.setCustomSpacing(extraSpacingForStackView, after: startButton)
 
 		logView.isEditable = false
 		logView.font = NSFont(name: "Courier New", size: 12.0)
